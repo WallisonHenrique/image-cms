@@ -1,27 +1,36 @@
 
 /*ImageList*/
 .item-img {
-	height: 250px;
-	padding: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .item-img img {
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
+	transition: opacity 300ms;
 }
 
 .item-img input {
 	position: absolute;
 	top: 15px;
-	right: 30px;
+	right: 15px;
 	height: 25px;
 	width: 25px;
-	transition: opacity 200ms;
 	cursor: pointer;
-	opacity: 0
+	opacity: 0;
 }
 
-.selected input {
+.wrapper-img {
+	background-color: black;
+	height: 250px;
+}
+
+.item-selected input {
 	opacity: 1;
+}
+
+.item-selected img {
+	opacity: .75;
 }
