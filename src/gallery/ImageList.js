@@ -20,8 +20,8 @@ class ImageList extends React.Component {
 
 		return images.map((img) =>
 			<div key={img.id} className="col-3">
-				<div className={`item-img ${this.state[img.id] ? 'item-selected' : ''}`} onClick={ () => this.handleClick(img.id)}>
-					<div className="wrapper-img">
+				<div className={`ItemImage ${this.state[img.id] ? 'selected' : ''}`} onClick={ () => this.handleClick(img.id)}>
+					<div className="Image-bg">
 						<img src={require(`../data/images/${img.path}`)} alt={img.description} title={img.name}/>
 					</div>
 					<input type="checkbox" defaultChecked={ this.state[img.id] } onClick={ (evt)=> evt.preventDefault() } />

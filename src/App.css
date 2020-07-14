@@ -1,18 +1,19 @@
 
 /*ImageList*/
-.item-img {
+.ItemImage {
 	padding-top: 15px;
 	padding-bottom: 15px;
+	height: 250px;
 }
 
-.item-img img {
+.ItemImage img {
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
 	transition: opacity 300ms;
 }
 
-.item-img input {
+.ItemImage [type="checkbox"] {
 	position: absolute;
 	top: 15px;
 	right: 15px;
@@ -22,15 +23,15 @@
 	opacity: 0;
 }
 
-.wrapper-img {
+.ItemImage-bg {
 	background-color: black;
-	height: 250px;
+	height: 100%;
 }
 
-.item-selected input {
+.ItemImage.selected input {
 	opacity: 1;
 }
 
-.item-selected img {
+.ItemImage.selected img {
 	opacity: .75;
 }
