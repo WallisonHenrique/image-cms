@@ -9,7 +9,7 @@ import { addToDownload, removeFromDownload } from '../data/DownloadActionCreator
 class Conector extends Component {
 	componentDidMount() {
 		this.props.loadData('IMAGES');
-
+		this.props.loadData('CATEGORIES');
 	}
 
 	filterImages(images = [], category) {

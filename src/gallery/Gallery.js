@@ -28,7 +28,7 @@ class Gallery extends Component {
 				</div>
 				<div className="row">
 					<div className="col-2">
-						<CategoryNavigation />
+						<CategoryNavigation baseUrl="/gallery" categories={this.props.categories} />
 					</div>
 					<div className="col">
 						<div className="row">
