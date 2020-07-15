@@ -1,19 +1,19 @@
 
 /*ImageList*/
-.ItemImage {
+.ImageItem {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	height: 250px;
 }
 
-.ItemImage img {
+.ImageItem img {
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
 	transition: opacity 300ms;
 }
 
-.ItemImage [type="checkbox"] {
+.ImageItem [type="checkbox"] {
 	position: absolute;
 	top: 15px;
 	right: 15px;
@@ -21,17 +21,27 @@
 	width: 25px;
 	cursor: pointer;
 	opacity: 0;
+	pointer-events: none;
 }
 
-.ItemImage-bg {
+.ImageItem-bg {
 	background-color: black;
 	height: 100%;
 }
 
-.ItemImage.selected input {
+.ImageItem.checked input {
 	opacity: 1;
 }
 
-.ItemImage.selected img {
+.ImageItem.checked img {
 	opacity: .75;
+}
+
+/*DownloadSummary*/
+
+
+.DownloadQueue img {
+	width: 100px;
+	height: 50px;
+	object-fit: cover;
 }

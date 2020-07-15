@@ -1,4 +1,6 @@
-import { createStore } from 'redux';
-import { Reducer } from './Reducer';
+import { createStore, combineReducers } from 'redux';
+import { GalleryReducer } from './GalleryReducer';
+import { DownloadReducer } from './DownloadReducer';
+import { CommonReducer } from './CommonReducer';
 
-export const ImageCMSDataStore = createStore( Reducer );
+export const ImageCMSDataStore = createStore(CommonReducer(GalleryReducer, DownloadReducer));

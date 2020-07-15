@@ -1,0 +1,24 @@
+import { ActionTypes } from './Types';
+
+export const DownloadReducer = (storeData, action) => {
+	const newStore = { downloadQueue: [], downloadItems: 0, ...storeData };
+	switch (action.type) {
+		case ActionTypes.DOWNLOAD_ADD:
+			const { image, quantity } = action.payload;
+			const exist = newStore.downloadQueue.find((item)=> item.image.id === image.id);
+
+			if (!exist) {
+				newStore.downloadQueue = [ ...newStore.downloadQueue, { image, quantity } ]
+				newStore.downloadItems += quantity;
+			}
+			
+			return newStore;
+		case ActionTypes.DOWNLOAD_REMOVE:
+			const selected = newStore.downloadQueue.find((item) => item.image.id === action.payload.id);
+			newStore.downloadQueue = newStore.downloadQueue.filter((item) => item.image.id !== action.payload.id);
+			newStore.downloadItems -= 1;
+			return newStore;
+		default: 
+			return storeData || {};
+	}
+}

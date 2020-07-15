@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Gallery from './Gallery';
+import DownloadQueue from './DownloadQueue';
 import { connect } from 'react-redux';
 import { loadData } from '../data/ActionCreators';
+import { addToDownload, removeFromDownload } from '../data/DownloadActionCreators';
 
 class Conector extends Component {
 	componentDidMount() {
 		this.props.loadData('IMAGES');
+
 	}
 
 	filterImages(images = [], category) {
@@ -20,7 +23,10 @@ class Conector extends Component {
 		return (
 			<Switch>
 				<Route path="/gallery/:category?" render={(routeProps) => 
-					<Gallery images={this.filterImages(this.props.images, routeProps.match.params.category)} />
+					<Gallery { ...this.props } images={this.filterImages(this.props.images, routeProps.match.params.category)} />
+				} />
+				<Route path="/downloads" render={ (routeProps)=>
+					<DownloadQueue { ...this.props }/>
 				} />
 				<Redirect to="/gallery" />
 			</Switch>
@@ -33,7 +39,7 @@ const mapStateToProps = dataStore => ({
 });
 
 const mapDispatchToProps = ({
-	loadData
+	loadData, addToDownload, removeFromDownload
 });
 
 
