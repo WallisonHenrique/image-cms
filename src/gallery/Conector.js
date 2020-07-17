@@ -8,8 +8,14 @@ import { addToDownload, removeFromDownload } from '../data/DownloadActionCreator
 
 class Conector extends Component {
 	componentDidMount() {
-		this.props.loadData('IMAGES');
-		this.props.loadData('CATEGORIES');
+		const params = {
+            _limit: 5,
+            _sort: "name",
+            _page: 1,
+            category_like: ""
+        }        
+		this.props.loadData('images', params);
+		this.props.loadData('categories');
 	}
 
 	filterImages(images = [], category) {

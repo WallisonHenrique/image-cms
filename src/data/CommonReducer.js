@@ -5,6 +5,5 @@ export const CommonReducer = (...reducers) => (storeData, action) => {
             return newStore;
         }
     }
-    console.log('CommonReducer');
     return storeData;
 }

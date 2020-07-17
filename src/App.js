@@ -6,8 +6,8 @@ import { ImageCMSDataStore } from './data/DataStore';
 import './App.css';
 
 class App extends React.Component {
-
     render() {
+        
         return (
             <Provider store={ ImageCMSDataStore }>
                 <Router>

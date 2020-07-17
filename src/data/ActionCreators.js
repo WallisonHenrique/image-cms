@@ -1,10 +1,14 @@
-import { data as imgData } from './placeholderData';
 import { ActionTypes, DataTypes } from './Types';
+import { RestDataSource } from "./RestDataSource";
 
-export const loadData = (dataType) => ({
+const dataSource = new RestDataSource();
+
+export const loadData = (dataType, params) => ({
 	type: ActionTypes.DATA_LOAD,
-	content: {
-		dataType: DataTypes[dataType],
-		images: imgData[DataTypes[dataType]]
-	}
+	dataType: dataType,
+	payload: dataSource.GetData(dataType, params).then((response) => ({
+		dataType,
+		data: response.data,
+		params
+	}))
 });
