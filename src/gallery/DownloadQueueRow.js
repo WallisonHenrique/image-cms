@@ -15,7 +15,7 @@ class DownloadQueueRow extends React.Component {
 			return <tr><td colSpan="3">Sua lista de download está vazia</td></tr>
 		return queue.map((item, index) => 
 			<tr key={item.image.id}>
-				<td><img src={require(`../data/images/${item.image.path}`)}/></td>
+				<td><img src={require(`../data/images/${item.image.path}`)} alt={item.image.name}/></td>
 				<td>{ item.image.name }</td>
 				<td><input type="checkbox" onChange={() => this.handleChange(item)}/></td>
 			</tr>

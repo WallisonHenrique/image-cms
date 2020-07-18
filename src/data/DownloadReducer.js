@@ -14,10 +14,11 @@ export const DownloadReducer = (storeData, action) => {
 			
 			return newStore;
 		case ActionTypes.DOWNLOAD_REMOVE:
-			const selected = newStore.downloadQueue.find((item) => item.image.id === action.payload.id);
 			newStore.downloadQueue = newStore.downloadQueue.filter((item) => item.image.id !== action.payload.id);
 			newStore.downloadItems -= 1;
 			return newStore;
+		case ActionTypes.DOWNLOAD_CLEAR:
+            return { ...storeData, downloadQueue: [], downloadItems: 0 }
 		default: 
 			return storeData || {};
 	}

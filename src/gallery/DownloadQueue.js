@@ -3,10 +3,6 @@ import DownloadQueueRow from './DownloadQueueRow';
 import { Link } from 'react-router-dom';
 
 class DownloadQueue extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return(
 			<div className="DownloadQueue container">
@@ -14,6 +10,7 @@ class DownloadQueue extends React.Component {
 					<div className="col">
 						<h2 className="text-center">Fila de download:</h2>
 						<Link to="/gallery" className="btn btn-dark m-2">Voltar para galeria</Link>
+						<Link to="/bait" className={`btn btn-dark m-2 ${!this.props.downloadItems ? 'disabled' : ''}`}>Fazer download</Link>
 						{this.props.downloadQueue 
 							?<table className="table table-sm table-striped table-dark text-center">
 								<thead>

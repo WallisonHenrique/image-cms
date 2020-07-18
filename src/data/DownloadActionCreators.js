@@ -11,4 +11,8 @@ export const addToDownload = (image, quantity) => ({
 export const removeFromDownload = (image) => ({
 	type: ActionTypes.DOWNLOAD_REMOVE,
 	payload: image
-})
+});
+
+export const clearDownload = () => ({
+    type: ActionTypes.DOWNLOAD_CLEAR
+});

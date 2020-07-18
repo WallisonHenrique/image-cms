@@ -11,7 +11,9 @@ module.exports = function () {
     { id: 4, name: "Buldogue", category: "Pets",
     description: "Inglaterra", path: "buldogue.jpg" },
     { id: 5, name: "Hornet", category: "Motos",
-    description: "Street 600cc", path: "hornet.jpg" },
-    ]
+    description: "Street 600cc", path: "hornet.jpg" }
+    ],
+    orders: []
    }
 }
+

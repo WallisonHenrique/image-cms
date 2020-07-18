@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import ImageList from './ImageList';
 import DownloadSummary from './DownloadSummary';
 import CategoryNavigation from './CategoryNavigation';
+import { ImagePageConnector } from "./ImagePageConnector";
+import { PaginationControls } from "../PaginationControls";
+
+const ImagePages = ImagePageConnector(PaginationControls);
 
 class Gallery extends Component {
 	constructor(props) {
@@ -32,6 +36,9 @@ class Gallery extends Component {
 					</div>
 					<div className="col">
 						<div className="row">
+							<div className="col-12">
+								<ImagePages />
+							</div>
 							<ImageList images={this.props.images} queue={this.props.downloadQueue} callback={ this.handleAddToDownload } />
 						</div>
 					</div>

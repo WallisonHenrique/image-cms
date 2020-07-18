@@ -2,39 +2,37 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Gallery from './Gallery';
 import DownloadQueue from './DownloadQueue';
+import {Bait} from './Bait';
+import {Thanks} from './Thanks';
+import DataSource from '../data/DataSource';
 import { connect } from 'react-redux';
-import { loadData } from '../data/ActionCreators';
-import { addToDownload, removeFromDownload } from '../data/DownloadActionCreators';
+import * as GalleryAction from '../data/ActionCreators';
+import * as DownloadAction from '../data/DownloadActionCreators';
 
 class Conector extends Component {
 	componentDidMount() {
-		const params = {
-            _limit: 5,
-            _sort: "name",
-            _page: 1,
-            category_like: ""
-        }        
-		this.props.loadData('images', params);
 		this.props.loadData('categories');
 	}
 
-	filterImages(images = [], category) {
-		if (!category) return images;
-		return images.filter((image) => {
-			return image.category.toLowerCase() === category;
-		});
-	}
-
-	render() {
+	render() { 
 		return (
 			<Switch>
-				<Route path="/gallery/:category?" render={(routeProps) => 
-					<Gallery { ...this.props } images={this.filterImages(this.props.images, routeProps.match.params.category)} />
+				<Route path="/gallery/:category/:page" render={(routeProps) => 
+					<DataSource { ...this.props } { ...routeProps }>
+						<Gallery { ...this.props } />
+					</DataSource>
 				} />
 				<Route path="/downloads" render={ (routeProps)=>
 					<DownloadQueue { ...this.props }/>
 				} />
-				<Redirect to="/gallery" />
+				<Route path="/bait" render={ (routeProps)=>
+					<Bait { ...this.props }/>
+				} />
+				<Route path="/thanks" render={ (routeProps)=>
+					<Thanks { ...this.props }/>
+				} />
+				<Redirect from="/gallery/:category/" to="/gallery/:category/1" />
+				<Redirect to="/gallery/todos/1" />
 			</Switch>
 		);
 	}
@@ -45,7 +43,7 @@ const mapStateToProps = dataStore => ({
 });
 
 const mapDispatchToProps = ({
-	loadData, addToDownload, removeFromDownload
+	...GalleryAction, ...DownloadAction
 });
 
 
